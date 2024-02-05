@@ -1,17 +1,19 @@
-body, html {
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #ffffffc5;
+}
+
+#root, .App {
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 
 .App {
   width: 100%;
-  max-width: 700px;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 20px;
 }
