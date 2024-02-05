@@ -1,36 +1,46 @@
-// PaymentPage.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './PaymentPage.css';
 
 function PaymentPage({ chainId, tokenContractAddress }) {
     const [amount, setAmount] = useState('');
     const [userId, setUserId] = useState('');
     const [isReloading, setIsReloading] = useState(false);
+    const navigate = useNavigate(); 
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const serverUrl = process.env.REACT_APP_SERVER_URL;
+        const successUrl = `${window.location.origin}/success.html`;
+        const failUrl = `${window.location.origin}/fail.html`;
+        const callbackUrl = 'https://webhook.site/87fe0309-343e-4996-81fb-5c180ff9b0af';
 
         try {
             const response = await axios.post(`${serverUrl}/api/createPayment`, {
                 amount,
                 userId,
                 chainId,
-                tokenContractAddress
+                tokenContractAddress,
+                callbackUrl,
+                successUrl,
+                failUrl
               }, {
                 headers: {
                   'Content-Type': 'application/json'
                 }
               });
 
-            if (response.data && response.data.code === 0) {
-                const { invoiceCallbackUrl } = response.data.data;
-                window.open(invoiceCallbackUrl, '_blank');
-            }
+              console.log('Response from the server', response);
+
+              if (response.data && response.data.code === 0 && response.data.data.invoiceUrl) {
+                const { invoiceUrl } = response.data.data;
+                window.open(invoiceUrl, '_blank');
+              }
 
         } catch (error) {
             console.error('Error making the API call', error);
+            navigate('/fail.html'); 
         }
     };
 

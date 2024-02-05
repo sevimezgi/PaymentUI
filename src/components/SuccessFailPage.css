@@ -1,0 +1,24 @@
+.status-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  .success {
+    color: #28a745;
+    background-color: #dffbe7;
+  }
+  
+  .fail {
+    color: #dc3545;
+    background-color: #fbe4e6;
+  }
+  
+  .status-icon {
+    font-size: 72px;
+    margin-bottom: 20px;
+  }
+  
