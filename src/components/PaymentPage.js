@@ -1,13 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './PaymentPage.css';
+import { currencies } from '../common/currencies.js';
 
 function PaymentPage({ chainId, tokenContractAddress }) {
     const [amount, setAmount] = useState('');
     const [userId, setUserId] = useState('');
+    const [currency, setCurrency] = useState();
+    const [coinConversion, setCoinConversion] = useState('');
+    const [delayTimeout, setDelayTimeout] = useState(null);
     const [isReloading, setIsReloading] = useState(false);
     const navigate = useNavigate(); 
+
+    useEffect(() => {
+        // Find the currency based on the provided tokenContractAddress
+        const foundCurrency = Object.entries(currencies).find(([key, value]) => value.contractAddress === tokenContractAddress)?.[0];
+        if (foundCurrency) {
+            setCurrency(foundCurrency);
+        } else {
+            console.error("No matching currency found for the provided token contract address");
+        }
+    }, [tokenContractAddress]);
+
+    // On amount change fetch the coin conversion
+    useEffect(() => {
+        if (amount !== '') {
+            clearTimeout(delayTimeout);
+            const timeout = setTimeout(() => {
+                fetchCoinConversion();
+            }, 1000);
+            setDelayTimeout(timeout);
+        }
+    }, [amount]);
+
+    const fetchCoinConversion = async (priceUrl) => {
+        try {
+            const response = await axios.get(priceUrl);
+            const coinPrice = response.data.tether.usd // parseCoinResponse(response); // return response.data.tether.usd
+            const coinConversion = parseFloat(amount) / coinPrice;
+            setCoinConversion(coinConversion.toFixed(8));
+        } catch (error) {
+            console.error('Error fetching coin conversion:', error);
+        }
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -68,9 +104,8 @@ function PaymentPage({ chainId, tokenContractAddress }) {
                         name="amount"
                         onChange={(e) => setAmount(e.target.value)}
                         required
-                        min="0"
                     />
-                    <span>Amount</span>
+                    <span>Amount (USD)</span>
                 </div>
                 <div className="inputbox">
                     <input
@@ -81,6 +116,9 @@ function PaymentPage({ chainId, tokenContractAddress }) {
                         required
                     />
                     <span>User ID</span>
+                </div>
+                <div className="coin-conversion">
+                    {coinConversion && <p>Payment amount in chosen coin: {coinConversion}</p>}
                 </div>
                 <div className="pay">
                     <button type="submit" className="btn btn-success btn-block">Submit Payment</button>
