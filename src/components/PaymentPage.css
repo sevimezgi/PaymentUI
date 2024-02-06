@@ -77,7 +77,7 @@
   cursor: pointer;
   transition: transform 1s;
   margin-left: 10px;
-  color: red;
+  color: #007bff;
 }
 
 .rotate {

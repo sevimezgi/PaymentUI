@@ -9,22 +9,6 @@ function PaymentPage({ chainId, tokenContractAddress }) {
     const [isReloading, setIsReloading] = useState(false);
     const navigate = useNavigate(); 
 
-    const getNetworkName = (chainId) => {
-        const networkMap = {
-          '137': 'Polygon',
-        };
-        return networkMap[chainId] || 'Unknown Network';
-    };
-
-    const getCurrencyName = (tokenContractAddress) => {
-        if (!tokenContractAddress) return "ETH";
-        const currencyMap = {
-            '0xc2132D05D31c914a87C6611C10748AEb04B58e8F' : 'USDT',
-        }
-        return currencyMap[tokenContractAddress] ? currencyMap[tokenContractAddress]: 'Custom Token';
-    };
-      
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         const serverUrl = process.env.REACT_APP_SERVER_URL;
@@ -49,12 +33,9 @@ function PaymentPage({ chainId, tokenContractAddress }) {
 
               console.log('Response from the server', response);
 
-              if (response.data && response.data.code === 0 && response.data.data.invoiceUrl) {
-                const networkName = getNetworkName(chainId);
-                const currencyName = getCurrencyName(tokenContractAddress);
+              if (response.data && response.data.code === 0 && response.data.data.invoiceUrl) {     
                 const { invoiceUrl } = response.data.data;
                 window.open(invoiceUrl, '_blank');
-                navigate(`/success.html?amount=${amount}&userId=${userId}&network=${networkName}&currency=${currencyName}`);
               }
 
         } catch (error) {
