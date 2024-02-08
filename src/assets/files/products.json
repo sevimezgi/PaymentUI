@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "name": "iPhone 12 Pro",
+    "desc": "Apple iPhone 12th generation",
+    "price": 999,
+    "color": "#33505a",
+    "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000",
+    "companyName": "Apple"
+  },
+  {
+    "id": 2,
+    "name": "Pixel 5",
+    "desc": "Google Pixel phone 5th generation",
+    "price": 699,
+    "color": "#00ac51",
+    "image": "https://www.telstra.com.au/content/dam/tcom/lego/2020/plans-devices/mobiles/google-pixel-5/shared-google-pixel-5-black-05-900x1200.png",
+    "companyName": "Google"
+  },
+  {
+    "id": 3,
+    "name": "M1 Macbook Air",
+    "desc": "Apple Macbook air with apple silicon",
+    "price": 1099,
+    "color": "#e0bfae",
+    "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP825/macbookair.png",
+    "companyName": "Apple"
+  },
+  {
+    "id": 4,
+    "name": "Airpods Pro",
+    "desc": "Apple Aipods Pro 1st generation",
+    "price": 200,
+    "color": "#e3e4e9",
+    "image": "https://crdms.images.consumerreports.org/c_lfill,w_598/prod/products/cr/models/400116-wireless-portable-headphones-apple-airpods-pro-10009323.png",
+    "companyName": "Apple"
+  },
+  {
+    "id": 5,
+    "name": "Samsung Galaxy S21",
+    "desc": "Samsung Galaxy 21st generation flagship smartphone",
+    "price": 799,
+    "color": "#202124",
+    "image": "https://images.samsung.com/is/image/samsung/assets/tr/smartphones/galaxy-s21-5g/specs/SM-G990_S21FE_Back_LV.png?$163_346_PNG$",
+    "companyName": "Samsung"
+  },
+  {
+    "id": 6,
+    "name": "OnePlus 9 Pro",
+    "desc": "OnePlus 9th generation flagship smartphone",
+    "price": 969,
+    "color": "#c0c0c0",
+    "image": "https://oasis.opstatics.com/content/dam/oasis/page/2021/9-series/spec-image/9-pro/Pine%20green-gallery..png",
+    "companyName": "OnePlus"
+  },
+  {
+    "id": 7,
+    "name": "Dell XPS 15",
+    "desc": "High-performance Dell laptop with infinity edge display",
+    "price": 1200,
+    "color": "#2a2a2a",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dell_XPS_15_%282017%29.png/730px-Dell_XPS_15_%282017%29.png",
+    "companyName": "Dell"
+  },
+  {
+    "id": 8,
+    "name": "Sony WH-1000XM4",
+    "desc": "Sony noise cancelling wireless headphones",
+    "price": 350,
+    "color": "#000000",
+    "image": "https://store.sony.co.nz/dw/image/v2/ABBC_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dw72e2d384/images/WH1000XM4S/WH1000XM4S.png",
+    "companyName": "Sony"
+  },
+  {
+    "id": 9,
+    "name": "Nintendo Switch",
+    "desc": "Portable home console by Nintendo",
+    "price": 299,
+    "color": "#e60012",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Nintendo_Switch_Console.png/799px-Nintendo_Switch_Console.png",
+    "companyName": "Nintendo"
+  },
+  {
+    "id": 10,
+    "name": "Bose QuietComfort Earbuds",
+    "desc": "Bose noise cancelling wireless earbuds",
+    "price": 279,
+    "color": "#f0f0f0",
+    "image": "https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc_earbuds/silo_images/v2/QCEB_PDP_Ecom-Gallery-B03.png/jcr:content/renditions/cq5dam.web.320.320.png",
+    "companyName": "Bose"
+  },
+  {
+    "id": 11,
+    "name": "Fitbit Versa 3",
+    "desc": "Fitbit smartwatch with GPS and heart rate tracking",
+    "price": 229,
+    "color": "#12a2e8",
+    "image": "https://www.fitbit.com/global/content/dam/fitbit/global/pdp/devices/versa-3/device-360/black/prod0.png",
+    "companyName": "Fitbit"
+  },
+  {
+    "id": 12,
+    "name": "Amazon Echo Dot (4th Gen)",
+    "desc": "Smart speaker with Alexa",
+    "price": 49.99,
+    "color": "#5a5a5a",
+    "image": "https://ee.co.uk/medias/amazon-echo-dot-4th-gen-twin-pack-desktop-detail-1-WebP-Format-488?context=bWFzdGVyfHJvb3R8MjAxMTB8aW1hZ2Uvd2VicHxzeXMtbWFzdGVyL3Jvb3QvaDBhL2gyNC85ODg5MzgzNzQzNTE4L2FtYXpvbi1lY2hvLWRvdC00dGgtZ2VuLXR3aW4tcGFjay1kZXNrdG9wLWRldGFpbC0xX1dlYlAtRm9ybWF0LTQ4OHxjNzE0OTM1MTIzZWY4OTUzZjBmYzk5NGFlMmNkYzRjZTIwODQ4YzYyYTNiZTM0ZDJiMGI5YzBlZTE5Y2MwZDJh",
+    "companyName": "Amazon"
+  },
+  {
+    "id": 13,
+    "name": "GoPro HERO9 Black",
+    "desc": "Action camera capable of 5K video recording",
+    "price": 399.99,
+    "color": "#1a1a1a",
+    "image": "https://postperspective.com/wp-content/uploads/2020/09/90_HERO9_Black_Colored_8bit_octopus_webcam_RGB-624x416.png",
+    "companyName": "GoPro"
+  },
+  {
+    "id": 14,
+    "name": "Microsoft Surface Pro 7",
+    "desc": "Microsoft 2-in-1 laptop with touch screen",
+    "price": 749,
+    "color": "#d1d1d1",
+    "image": "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4tjV5?ver=eab4",
+    "companyName": "Microsoft"
+  }
+]
