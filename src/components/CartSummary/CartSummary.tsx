@@ -1,20 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import mastercardIcon from "../../assets/mastercard.png";
 import stripeIcon from "../../assets/stripe.svg";
 import usdtIcon from "../../assets/usdt.png";
+import getStripe from "../../configs/stripeConfig"
 
-const CartSummary = ({ cartItems, onPaymentSelect }) => {
+const CartSummary = ({ cartItems }) => {
   const [selectedPayment, setSelectedPayment] = useState('Cryptocurrencies');
-  const totalPrice = cartItems?.reduce(
-    (acc, a) => acc + a.price * a.itemCount,
-    0
-  );
 
+  const totalPrice = cartItems?.reduce((acc, a) => acc + a.price * a.itemCount, 0);
   const fee = Math.round((totalPrice / 100) * 1);
 
-  const handlePaymentSelection = (paymentMethod) => {
-    setSelectedPayment(paymentMethod);
-  };
+  async function handleCheckout() {
+    if (selectedPayment !== 'Stripe') return;
+
+    try {
+        const stripe = await getStripe();
+        const response = await fetch(`http://localhost:3000/api/create-checkout-session`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ cartItems }),
+        });
+        const session = await response.json();
+
+        if (stripe) {
+            const result = await stripe.redirectToCheckout({
+                sessionId: session.sessionId,
+            });
+
+            if (result.error) {
+                alert(result.error.message);
+            }
+        } else {
+            console.error("Stripe couldn't be initialized.");
+        }
+    } catch (error) {
+        console.error('Error in handleCheckout:', error);
+    }
+}
+
 
   return (
     <div className={`summary flex flex-col flex-[30%] bg-white rounded-xl xl p-5 h-fit shadow-lg my-5 lg:my-0 ${cartItems.length == 0 ? "hidden" : ""}`}>
@@ -81,7 +106,7 @@ const CartSummary = ({ cartItems, onPaymentSelect }) => {
               <span className="text-gray-700">Credit Card</span>
             </label>
             <label className="inline-flex items-center mt-3">
-              <input type="radio" className="form-radio h-5 w-5 text-gray-600" value="Stripe" checked={selectedPayment === 'Stripe'} onChange={() => handlePaymentSelection('Stripe')} />
+              <input type="radio" className="form-radio h-5 w-5 text-gray-600" value="Stripe" checked={selectedPayment === 'Stripe'} onChange={() => setSelectedPayment('Stripe')} />
               <img src={stripeIcon} alt="Stripe" className="h-8 w-8 ml-2 mr-2" />
               <span className="text-gray-700">Stripe</span>
             </label>
@@ -94,7 +119,10 @@ const CartSummary = ({ cartItems, onPaymentSelect }) => {
           Cancel
         </button>
         <button
-          className="rounded-lg outline-none border border-[#ddd] py-1 px-5 flex-[50%] bg-primaryColor text-white">
+          className={`rounded-lg outline-none border border-[#ddd] py-1 px-5 flex-[50%] ${selectedPayment === 'Stripe' ? 'bg-primaryColor text-white' : ''}`}
+          onClick={handleCheckout}
+          disabled={selectedPayment !== 'Stripe'}
+        >
           Confirm
         </button>
       </div>

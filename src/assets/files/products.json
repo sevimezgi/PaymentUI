@@ -1,5 +1,14 @@
 [
   {
+    "id": 0,
+    "name": "Vision Pro",
+    "desc": "Apple Vision Pro",
+    "price": 3499,
+    "color": "#33805a",
+    "image": "https://i.ibb.co/42kRrvY/Apple-Vision-Pro.png",
+    "companyName": "Apple"
+  },
+  {
     "id": 1,
     "name": "iPhone 12 Pro",
     "desc": "Apple iPhone 12th generation",
