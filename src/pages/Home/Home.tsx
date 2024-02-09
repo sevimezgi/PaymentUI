@@ -5,6 +5,7 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import { useSelector } from "react-redux";
 import { useAppSelector } from "../../store";
 import { ICartItem } from "../../store/cart.slice";
+import "./Home.css"
 
 const Home = () => {
   const cartItems = useAppSelector((state) => state.cart.items) as ICartItem[];
@@ -16,7 +17,7 @@ const Home = () => {
           <h1 className="font-medium text-2xl">Recommended for you</h1>
         </div>
 
-        <div className="flex flex-wrap gap-5 items-start justify-start">
+        <div className="flex flex-wrap gap-5 item-start product-content">
           {/* products list */}
           {products.map((product) => (
             <ProductCard
